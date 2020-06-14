@@ -1,11 +1,13 @@
 {
-  "name": "Weather-App",
+  "name": "iWeather",
   "version": "1.0.0",
   "description": "A Weather App",
   "main": "src/main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "gh-pages -d src"
   },
+  "homepage": "https://samod667.github.io/weather-app",
   "keywords": [],
   "author": "Dor Sam",
   "license": "MIT",
@@ -13,6 +15,7 @@
     "@types/es6-promise": "^3.3.0",
     "animate.css": "^4.1.0",
     "bootstrap": "^4.5.0",
+    "gh-pages": "^3.0.0",
     "typescript": "^3.9.3"
   },
   "devDependencies": {

@@ -205,47 +205,6 @@ const toTitleCase = (phrase) => {
     .join(" ");
 };
 
-//get Date function
-function getDate() {
-  const date = new Date();
-
-  let d = date.getDay();
-  const m = date.getMonth();
-  const dm = date.getDate();
-
-  const weekdays = new Array(7);
-  weekdays[0] = "Sun";
-  weekdays[1] = "Mon";
-  weekdays[2] = "Tue";
-  weekdays[3] = "Wed";
-  weekdays[4] = "Thu";
-  weekdays[5] = "Fri";
-  weekdays[6] = "Sat";
-
-  const months = new Array(11);
-  months[0] = "Jan";
-  months[1] = "Feb";
-  months[2] = "Mar";
-  months[3] = "Apr";
-  months[4] = "May";
-  months[5] = "Jun";
-  months[6] = "Jul";
-  months[7] = "Aug";
-  months[8] = "Sep";
-  months[9] = "Oct";
-  months[10] = "Nov";
-  months[11] = "Sep";
-
-
-  for (let i = 0; i < 6; i++) {
-      d = d + 1
-      
-      document.getElementById('daily-date').innerText = weekdays[d];
-  }
-}
-
-
-
 //Function show success
 function showSuccess() {
   //Add success style

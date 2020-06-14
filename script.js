@@ -41,6 +41,7 @@ var js = document.getElementById("js");
 var resultsEl = document.getElementById("result-container");
 var errorMsg = document.getElementById("error-msg");
 var darkModeBtn = document.getElementById("dark-mode-btn");
+/// EVENT LISTENERS ///
 //On load animation
 window.onload = function () {
     formEl.classList.add("animate__animated", "animate__bounceInDown");
@@ -103,10 +104,11 @@ function createResultContainer(dataDaily, dataWeakly) {
             .insertAdjacentHTML("afterbegin", markup);
         displayUVIndex(uvIndex);
         if (index < 1) {
-            document.getElementById('daily-date').innerText = "Today";
+            document.getElementById("daily-date").innerText = "Today";
         }
     });
 }
+/// FUNCTIONS ///
 //Get daily data from API
 function getWeather() {
     return __awaiter(this, void 0, void 0, function () {
@@ -150,7 +152,7 @@ function getWeather() {
                     userInput.classList.add("error");
                     errorMsg.style.display = "block";
                     errorMsg.innerText = "Can't find the city you look for :( Try another";
-                    resultsEl.innerHTML = '';
+                    resultsEl.innerHTML = "";
                     return [3 /*break*/, 7];
                 case 7: return [2 /*return*/];
             }
@@ -169,38 +171,6 @@ var toTitleCase = function (phrase) {
         .map(function (word) { return word.charAt(0).toUpperCase() + word.slice(1); })
         .join(" ");
 };
-//get Date function
-function getDate() {
-    var date = new Date();
-    var d = date.getDay();
-    var m = date.getMonth();
-    var dm = date.getDate();
-    var weekdays = new Array(7);
-    weekdays[0] = "Sun";
-    weekdays[1] = "Mon";
-    weekdays[2] = "Tue";
-    weekdays[3] = "Wed";
-    weekdays[4] = "Thu";
-    weekdays[5] = "Fri";
-    weekdays[6] = "Sat";
-    var months = new Array(11);
-    months[0] = "Jan";
-    months[1] = "Feb";
-    months[2] = "Mar";
-    months[3] = "Apr";
-    months[4] = "May";
-    months[5] = "Jun";
-    months[6] = "Jul";
-    months[7] = "Aug";
-    months[8] = "Sep";
-    months[9] = "Oct";
-    months[10] = "Nov";
-    months[11] = "Sep";
-    for (var i = 0; i < 6; i++) {
-        d = d + 1;
-        document.getElementById('daily-date').innerText = weekdays[d];
-    }
-}
 //Function show success
 function showSuccess() {
     //Add success style
@@ -232,5 +202,7 @@ function changeToDarkMode() {
     var body = document.querySelector("body");
     body.classList.toggle("dark-mode-enabled");
     darkModeBtn.classList.toggle("dark-mode-enabled");
-    document.querySelectorAll(".table-row").forEach(function (e) { return e.classList.toggle('dark-mode-enabled'); });
+    document
+        .querySelectorAll(".table-row")
+        .forEach(function (e) { return e.classList.toggle("dark-mode-enabled"); });
 }

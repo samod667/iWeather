@@ -159,7 +159,7 @@ function createResultContainer(dataDaily, dataWeakly) {
 //Get daily data from API
 async function getWeather() {
   let location = userInput["value"];
-  console.log(location);
+  // console.log(location);
   const city = `q=${location}`;
   const apiKey = "appid=568850fc8ca011f081228dd677ed823f";
   const baseUrl = `https://api.openweathermap.org/data/2.5/weather?${city}&units=metric&${apiKey}`;
@@ -170,7 +170,7 @@ async function getWeather() {
     const dataDaily = await result.json();
     //Show success msg
 
-    console.log(dataDaily);
+    // console.log(dataDaily);
 
     let [lon, lat] = [dataDaily.coord.lon, dataDaily.coord.lat];
     //Get weekly data from api
@@ -178,7 +178,7 @@ async function getWeather() {
       `${weeklyUrl}?lat=${lat}&lon=${lon}&exclude=minutely,hourly&units=metric&${apiKey}`
     );
     const dataWeakly = await resultWeakly.json();
-    console.log(dataWeakly);
+    // console.log(dataWeakly);
     showSuccess();
     //Display result on UI function
     createResultContainer(dataDaily, dataWeakly);

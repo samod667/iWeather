@@ -117,7 +117,6 @@ function getWeather() {
             switch (_b.label) {
                 case 0:
                     location = userInput["value"];
-                    console.log(location);
                     city = "q=" + location;
                     apiKey = "appid=568850fc8ca011f081228dd677ed823f";
                     baseUrl = "https://api.openweathermap.org/data/2.5/weather?" + city + "&units=metric&" + apiKey;
@@ -131,8 +130,6 @@ function getWeather() {
                     return [4 /*yield*/, result.json()];
                 case 3:
                     dataDaily = _b.sent();
-                    //Show success msg
-                    console.log(dataDaily);
                     _a = [dataDaily.coord.lon, dataDaily.coord.lat], lon = _a[0], lat = _a[1];
                     return [4 /*yield*/, fetch(weeklyUrl + "?lat=" + lat + "&lon=" + lon + "&exclude=minutely,hourly&units=metric&" + apiKey)];
                 case 4:
@@ -140,7 +137,7 @@ function getWeather() {
                     return [4 /*yield*/, resultWeakly.json()];
                 case 5:
                     dataWeakly = _b.sent();
-                    console.log(dataWeakly);
+                    // console.log(dataWeakly);
                     showSuccess();
                     //Display result on UI function
                     createResultContainer(dataDaily, dataWeakly);

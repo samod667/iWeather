@@ -1,0 +1,8 @@
+{
+    "compilerOptions": {
+        "module": "CommonJS",
+        "target": "ES5",
+        "removeComments": true,
+    "lib": ["ES2015", "ESNext", "DOM", "ES2015.Promise"]
+    }
+}

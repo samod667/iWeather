@@ -10,6 +10,7 @@
   "author": "Dor Sam",
   "license": "MIT",
   "dependencies": {
+    "@types/es6-promise": "^3.3.0",
     "animate.css": "^4.1.0",
     "bootstrap": "^4.5.0",
     "typescript": "^3.9.3"

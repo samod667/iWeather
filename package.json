@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "deploy": "gh-pages -d dist"
   },
-  "homepage": "https://samod667.github.io/weather-app",
+  "homepage": "https://samod667.github.io/iWeather",
   "keywords": [],
   "author": "Dor Sam",
   "license": "MIT",

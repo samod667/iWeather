@@ -6,6 +6,8 @@ const resultsEl = document.getElementById("result-container");
 const errorMsg = document.getElementById("error-msg");
 const darkModeBtn = document.getElementById("dark-mode-btn");
 
+/// EVENT LISTENERS ///
+
 //On load animation
 window.onload = () => {
   formEl.classList.add("animate__animated", "animate__bounceInDown");
@@ -57,7 +59,6 @@ formEl.addEventListener("submit", (e) => {
 });
 
 function createResultContainer(dataDaily, dataWeakly) {
-  
   //Create the div element
   const div = document.createElement("div");
 
@@ -115,9 +116,8 @@ function createResultContainer(dataDaily, dataWeakly) {
   div.innerHTML = markdown;
 
   dataWeakly.daily.forEach((day, index) => {
-    
     const uvIndex: string = Math.floor(+day.uvi).toString();
-    
+
     const markup = `
         <div class="weather-daily">
         <span id="daily-date">${new Date(day.dt * 1000).toLocaleString(
@@ -145,15 +145,16 @@ function createResultContainer(dataDaily, dataWeakly) {
       .getElementById("weekly-result-container")
       .insertAdjacentHTML("afterbegin", markup);
 
-      displayUVIndex(uvIndex)
+    displayUVIndex(uvIndex);
 
-       if (index < 1) {
-         document.getElementById('daily-date').innerText = "Today"
-       }
-      
+    if (index < 1) {
+      document.getElementById("daily-date").innerText = "Today";
+    }
   });
-
 }
+
+
+/// FUNCTIONS ///
 
 //Get daily data from API
 async function getWeather() {
@@ -168,7 +169,7 @@ async function getWeather() {
     const result = await fetch(`${baseUrl}`);
     const dataDaily = await result.json();
     //Show success msg
-    
+
     console.log(dataDaily);
 
     let [lon, lat] = [dataDaily.coord.lon, dataDaily.coord.lat];
@@ -178,7 +179,7 @@ async function getWeather() {
     );
     const dataWeakly = await resultWeakly.json();
     console.log(dataWeakly);
-      showSuccess();
+    showSuccess();
     //Display result on UI function
     createResultContainer(dataDaily, dataWeakly);
   } catch (error) {
@@ -187,7 +188,7 @@ async function getWeather() {
     userInput.classList.add("error");
     errorMsg.style.display = "block";
     errorMsg.innerText = "Can't find the city you look for :( Try another";
-    resultsEl.innerHTML = '';
+    resultsEl.innerHTML = "";
   }
 }
 
@@ -217,17 +218,14 @@ function showSuccess() {
 
 //UVI change color
 function displayUVIndex(uv: string) {
-  const uvInt = +uv
+  const uvInt = +uv;
   const uvEl = document.getElementById("uv-index");
   if (uvInt >= 0 && uvInt <= 6) {
     uvEl.style.color = "#53d926";
-
   } else if (uvInt > 6 && uvInt < 10) {
     uvEl.style.color = "#ebd71e";
- 
   } else if (uvInt >= 10) {
     uvEl.style.color = "#eb1e1e";
-    
   } else {
     uvEl.style.color = "black";
   }
@@ -239,5 +237,7 @@ function changeToDarkMode() {
 
   body.classList.toggle("dark-mode-enabled");
   darkModeBtn.classList.toggle("dark-mode-enabled");
-  document.querySelectorAll(".table-row").forEach(e => e.classList.toggle('dark-mode-enabled'));
+  document
+    .querySelectorAll(".table-row")
+    .forEach((e) => e.classList.toggle("dark-mode-enabled"));
 }
